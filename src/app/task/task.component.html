@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>To Do Edit</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- ===============================================================================================-->
+  <link rel="icon" type="image/png" href="assets/images/icons/favicon.ico" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="assets/vendor2/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="assets/vendor2/animate/animate.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="assets/vendor2/css-hamburgers/hamburgers.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="assets/vendor2/select2/select2.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="assets/css2/util.css">
+  <link rel="stylesheet" type="text/css" href="assets/css2/main.css">
+  <!--=============================================================================================== -->
+
+</head>
+<!------ Include the above in your HEAD tag ---------->
+
+<body>
+  <form class="form-horizontal" [formGroup]="formEditTodo" (ngSubmit)="editToDo(formEditTodo.value)">
+    <fieldset>
+
+      <!-- Form Name -->
+      <legend>EDIT TASK</legend>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="DSD">TITLE</label>
+        <div class="col-md-4">
+          <input id="DSD" name="DSD" type="text" placeholder="" class="form-control input-md" formControlName='title'
+            required>
+
+        </div>
+      </div>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="DSD">DATE</label>
+        <div class="col-md-4">
+          <input id="DSD" name="DSD" type="datetime" format="yyyy-MM-ddThh:mm" placeholder="" class="form-control input-md"
+            formControlName='date' [value]="formEditTodo.value.date | date:'fullDate':'GMT-0':'fr-FR' " required>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="checkbox">
+          <label class="col-md-4 control-label">
+            <input type="checkbox" value="" formControlName='done' required />Done</label>
+        </div>
+      </div>
+
+      <!-- Button (Double) -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="button1idDDSA"></label>
+        <div class="col-md-8">
+          <button id="button1idDDSA" name="button1idDDSA" class="btn btn-success">SUBMIT</button>
+          <button id="button2id" name="button2id" class="btn btn-danger">CANCEL</button>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</body>
+
+</html>

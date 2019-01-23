@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Contact V1</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- ===============================================================================================-->
+  <link rel="icon" type="image/png" href="assets/images/icons/favicon.ico" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="assets/vendor2/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="assets/vendor2/animate/animate.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="assets/vendor2/css-hamburgers/hamburgers.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="assets/vendor2/select2/select2.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="assets/css2/util.css">
+  <link rel="stylesheet" type="text/css" href="assets/css2/main.css">
+  <!--=============================================================================================== -->
+
+</head>
+
+<body>
+
+   <div class="container">
+      <div class="row">
+          <div class="col-md-6">
+              <div class="todolist not-done">
+               <h1>Todos</h1>
+               <form [formGroup]="formTodoList" (ngSubmit)="addToDoList(formTodoList.value)">
+                  <input type="text" class="form-control add-todo" placeholder="Add todo" formControlName='task' required>
+                      <button id="checkAll" class="btn btn-success" type="submit" [disabled]="!formTodoList.valid">Mark all as done</button>
+              </form>
+                      
+                      <hr>
+                      <ul id="sortable" class="list-unstyled">
+                    <li class="ui-state-default" *ngFor='let item of toDoList; let i = index'>
+                        <div class="checkbox" *ngIf='!item.done'>
+                    
+                            <label>
+                                <input type="checkbox" value="" (click)='item.done = !item.done'/>
+                                <a class="nav-link" routerLink="/toDoList/{{i}}" routerLinkActive="active">
+                                {{item.title}} - {{item.date | date:'medium'}}</a></label>
+                        </div>
+                    </li>
+                      
+                  </ul>
+                  <div class="todo-footer">
+                      <strong><span class="count-todos"></span></strong> Items Left
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="todolist">
+               <h1>Already Done</h1>
+                  <ul id="done-items" class="list-unstyled" *ngFor='let item of toDoList; let i = index'>
+                      <li *ngIf='item.done'>{{item.title}} - {{item.date | date:'medium'}} <button class="remove-item btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-remove"></span></button></li>
+                      
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+  <!--===============================================================================================-->
+  <script src="assets/vendor2/jquery/jquery-3.2.1.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="assets/vendor2/bootstrap/js/popper.js"></script>
+  <script src="assets/vendor2/bootstrap/js/bootstrap.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="assets/vendor2/select2/select2.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="assets/vendor2/tilt/tilt.jquery.min.js"></script>
+  <script>
+    $('.js-tilt').tilt({
+      scale: 1.1
+    })
+  </script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+  </script>
+
+  <!--===============================================================================================-->
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
